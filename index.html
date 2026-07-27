@@ -628,16 +628,57 @@
       gap:8px;
     }
     .floating-button {
+      position:relative;
+      width:48px;
+      height:48px;
+      padding:0;
       display:inline-flex;
       align-items:center;
-      gap:7px;
-      padding:11px 18px;
-      border-radius:999px;
+      justify-content:center;
+      border-radius:50%;
       box-shadow:0 8px 25px rgba(0,0,0,.15);
-      font-weight:800;
-      transition:.2s;
+      font-weight:900;
+      transition:transform .2s, box-shadow .2s;
     }
-    .floating-button:hover { transform:translateY(-2px); }
+    .floating-button i {
+      width:21px;
+      height:21px;
+      stroke-width:2.2;
+    }
+    .floating-button:hover {
+      transform:translateY(-3px) scale(1.04);
+      box-shadow:0 11px 28px rgba(0,0,0,.2);
+    }
+    .floating-button::before {
+      content:attr(data-label);
+      position:absolute;
+      right:58px;
+      top:50%;
+      transform:translateY(-50%) translateX(8px);
+      padding:7px 10px;
+      border-radius:7px;
+      background:rgba(8,28,44,.94);
+      color:#fff;
+      font-size:12px;
+      font-weight:700;
+      line-height:1;
+      white-space:nowrap;
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:.18s;
+    }
+    .floating-button:hover::before,
+    .floating-button:focus-visible::before {
+      opacity:1;
+      visibility:visible;
+      transform:translateY(-50%) translateX(0);
+    }
+    .floating-naver-mark {
+      font-size:19px;
+      font-weight:950;
+      line-height:1;
+    }
 
     .image-modal {
       position:fixed;
@@ -780,7 +821,8 @@
       .footer-top { flex-direction:column; }
       .footer-right { align-items:flex-start; }
       .floating-actions { right:14px; bottom:14px; }
-      .floating-button { padding:10px 14px; }
+      .floating-button { width:44px; height:44px; }
+      .floating-button::before { display:none; }
       .image-modal { padding:10px; }
       .modal-dialog { padding:10px; border-radius:12px; }
       .modal-close { top:18px; right:18px; }
@@ -871,7 +913,7 @@
     <div class="main-content navbar">
      <a href="#top" class="brand" aria-label="4STEPS Book Club 홈"> <img data-template-id="brand-logo" class="canva-image brand-logo" loading="lazy" src="images/logo.png" alt="네 개의 성장 막대와 4steps bookclub 글자가 있는 로고"> </a> <button id="menu-button" class="menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-nav"> <i data-lucide="menu"></i> </button>
      <nav id="site-nav" class="desktop-nav" aria-label="주요 메뉴">
-      <a href="#about" data-template-id="nav-about" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">ABOUT</a> <a href="#faculty" data-template-id="nav-faculty" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">FACULTY</a> <a href="#curriculum" data-template-id="nav-curriculum" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">CURRICULUM</a> <a href="#level-system" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">LEVEL SYSTEM</a> <a href="#class-content" data-template-id="nav-class-content" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">CLASS CONTENT</a> <a href="#management" data-template-id="nav-management" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">MANAGEMENT</a> <a href="https://m.blog.naver.com/4stepsbookclub" target="_blank" rel="noopener noreferrer" class="nav-social naver" aria-label="네이버 블로그"><span aria-hidden="true" class="font-black">N</span></a> <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer" class="nav-social kakao" aria-label="카카오톡"><i data-lucide="message-circle" class="w-4 h-4"></i></a> <a href="https://www.instagram.com/4stepsbookclub/" target="_blank" rel="noopener noreferrer" class="nav-social instagram" aria-label="인스타그램"><i data-lucide="instagram" class="w-4 h-4"></i></a> <a href="#consulting" data-template-id="nav-cta" class="canva-button nav-cta" style="background: rgb(207, 122, 56); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 13px;">무료 레벨테스트</a>
+      <a href="#about" data-template-id="nav-about" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">ABOUT</a> <a href="#faculty" data-template-id="nav-faculty" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">FACULTY</a> <a href="#curriculum" data-template-id="nav-curriculum" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">CURRICULUM</a> <a href="#level-system" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">LEVEL SYSTEM</a> <a href="#class-content" data-template-id="nav-class-content" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">CLASS CONTENT</a> <a href="#management" data-template-id="nav-management" class="canva-link" style="color: rgb(82, 101, 121); font-weight: 700; font-style: normal; font-size: 12px;">MANAGEMENT</a> <a href="https://blog.naver.com" target="_blank" rel="noopener noreferrer" class="nav-social naver" aria-label="네이버 블로그"><span aria-hidden="true" class="font-black">N</span></a> <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer" class="nav-social kakao" aria-label="카카오톡"><i data-lucide="message-circle" class="w-4 h-4"></i></a> <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="nav-social instagram" aria-label="인스타그램"><i data-lucide="instagram" class="w-4 h-4"></i></a> <a href="#consulting" data-template-id="nav-cta" class="canva-button nav-cta" style="background: rgb(207, 122, 56); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 13px;">무료 레벨테스트</a>
      </nav>
     </div>
    </header>
@@ -887,7 +929,7 @@
       <p data-template-id="hero-description" class="canva-text hero-desc" style="color: rgb(208, 220, 230); font-weight: 400; font-style: normal; font-size: 20px; line-height: 1.7;">국제학교 학생과 해외 유학생을 위한 프리미엄 주니어 북클럽<br> </p>
        <p data-template-id="hero-description" class="canva-text hero-desc" style="color: rgb(208, 220, 230); font-weight: 400; font-style: normal; font-size: 20px; line-height: 1.7;"> 검증된 서울대학교 출신, 원어민급 강사진과 함께하는 4인 소수 관리형 프로그램<br></p>
       <div class="hero-actions">
-       <a href="#consulting" data-template-id="hero-primary-button" class="canva-button action-button primary-button" style="background: rgb(207, 122, 56); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">무료 레벨 테스트 신청하기 →</a> <a href="#class-content" data-template-id="hero-secondary-button" class="canva-button action-button outline-button" style="background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">실제 수업 콘텐츠 보기</a> <a href="https://m.blog.naver.com/4stepsbookclub" target="_blank" rel="noopener noreferrer" data-template-id="hero-naver-button" class="canva-button action-button social-outline" style="background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">네이버 블로그</a> <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer" data-template-id="hero-kakao-button" class="canva-button action-button social-outline" style="background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">카카오톡 상담</a> <a href="https://www.instagram.com/4stepsbookclub/" target="_blank" rel="noopener noreferrer" data-template-id="hero-instagram-button" class="canva-button action-button social-outline" style="background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;"><i data-lucide="instagram" class="w-4 h-4"></i> 인스타그램</a>
+       <a href="#consulting" data-template-id="hero-primary-button" class="canva-button action-button primary-button" style="background: rgb(207, 122, 56); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">무료 레벨 테스트 신청하기 →</a> <a href="#class-content" data-template-id="hero-secondary-button" class="canva-button action-button outline-button" style="background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">실제 수업 콘텐츠 보기</a> <a href="https://blog.naver.com" target="_blank" rel="noopener noreferrer" data-template-id="hero-naver-button" class="canva-button action-button social-outline" style="background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">네이버 블로그</a> <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer" data-template-id="hero-kakao-button" class="canva-button action-button social-outline" style="background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">카카오톡 상담</a> <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" data-template-id="hero-instagram-button" class="canva-button action-button social-outline" style="background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;"><i data-lucide="instagram" class="w-4 h-4"></i> 인스타그램</a>
       </div>
       <div class="hero-stats" aria-label="프로그램 핵심 정보">
        <div class="hero-stat">
@@ -1395,8 +1437,31 @@
      </div>
     </section>
    </main>
-   <aside class="floating-actions" aria-label="빠른 상담">
-    <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer" data-template-id="floating-kakao" class="canva-button floating-button" style="background: rgb(254, 229, 0); color: rgb(58, 29, 29); font-weight: 800; font-style: normal; font-size: 14px;">카카오톡</a> <a href="https://www.instagram.com/4stepsbookclub/" target="_blank" rel="noopener noreferrer" data-template-id="floating-instagram" class="canva-button floating-button instagram" style="color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 14px;"><i data-lucide="instagram" class="w-4 h-4"></i> 인스타그램</a> <a href="https://m.blog.naver.com/4stepsbookclub" target="_blank" rel="noopener noreferrer" data-template-id="floating-naver" class="canva-button floating-button" style="background: rgb(3, 199, 90); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 14px;">네이버 블로그</a> <a href="#consulting" data-template-id="floating-consult" class="canva-button floating-button" style="background: rgb(207, 122, 56); color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 14px;">무료 상담 신청</a>
+   <aside class="floating-actions" aria-label="빠른 링크">
+    <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer"
+       data-template-id="floating-kakao" class="canva-button floating-button"
+       data-label="카카오톡" aria-label="카카오톡"
+       style="background:#fee500;color:#3a1d1d;">
+      <i data-lucide="message-circle" aria-hidden="true"></i>
+    </a>
+    <a href="https://blog.naver.com" target="_blank" rel="noopener noreferrer"
+       data-template-id="floating-naver" class="canva-button floating-button"
+       data-label="네이버 블로그" aria-label="네이버 블로그"
+       style="background:#03c75a;color:#fff;">
+      <span class="floating-naver-mark" aria-hidden="true">N</span>
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+       data-template-id="floating-instagram" class="canva-button floating-button instagram"
+       data-label="인스타그램" aria-label="인스타그램"
+       style="color:#fff;">
+      <i data-lucide="instagram" aria-hidden="true"></i>
+    </a>
+    <a href="#consulting"
+       data-template-id="floating-consult" class="canva-button floating-button"
+       data-label="무료 상담 신청" aria-label="무료 상담 신청"
+       style="background:#cf7a38;color:#fff;">
+      <i data-lucide="calendar-check" aria-hidden="true"></i>
+    </a>
    </aside>
    <footer data-template-id="footer-section" class="canva-footer site-footer" style="background: rgb(16, 42, 67);">
     <div class="main-content">
@@ -1410,7 +1475,7 @@
         <a href="#about" data-template-id="footer-about" class="canva-link" style="color: rgb(185, 201, 216); font-weight: 400; font-style: normal; font-size: 13px;">About</a> <a href="#faculty" data-template-id="footer-faculty" class="canva-link" style="color: rgb(185, 201, 216); font-weight: 400; font-style: normal; font-size: 13px;">Faculty</a> <a href="#curriculum" data-template-id="footer-curriculum" class="canva-link" style="color: rgb(185, 201, 216); font-weight: 400; font-style: normal; font-size: 13px;">Curriculum</a> <a href="#class-content" data-template-id="footer-class-content" class="canva-link" style="color: rgb(185, 201, 216); font-weight: 400; font-style: normal; font-size: 13px;">Class Content</a> <a href="#consulting" data-template-id="footer-contact" class="canva-link" style="color: rgb(185, 201, 216); font-weight: 400; font-style: normal; font-size: 13px;">Contact</a>
        </nav>
        <div class="footer-socials">
-        <a href="https://m.blog.naver.com/4stepsbookclub" target="_blank" rel="noopener noreferrer" class="footer-social naver" aria-label="네이버 블로그"><strong>N</strong></a> <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer" class="footer-social kakao" aria-label="카카오톡"><i data-lucide="message-circle"></i></a> <a href="https://www.instagram.com/4stepsbookclub/4stepsbookclub/" target="_blank" rel="noopener noreferrer" class="footer-social instagram" aria-label="인스타그램"><i data-lucide="instagram"></i></a>
+        <a href="https://blog.naver.com" target="_blank" rel="noopener noreferrer" class="footer-social naver" aria-label="네이버 블로그"><strong>N</strong></a> <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer" class="footer-social kakao" aria-label="카카오톡"><i data-lucide="message-circle"></i></a> <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-social instagram" aria-label="인스타그램"><i data-lucide="instagram"></i></a>
        </div>
       </div>
      </div>
